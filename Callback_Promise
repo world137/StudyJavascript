@@ -1,0 +1,49 @@
+Synchronous => ทำงานแบบเป็นลำดับขั้นตอน
+ex => console.log("aaa")
+      console.log("bbb")
+      console.log("ccc")
+      ทำงานจากบนลงล่าง
+------------------------------------------------------------------------------------
+Asynchonous => ทำงานแบบไม่เป็นลำดับขั้นตอน 
+ex => console.log("aaa") --1
+      setTimeout(function(){ --3
+          console.log("bbb")
+      },3000) ==> หน่วงเวลา 3000 ms
+      console.log("ccc") --2
+------------------------------------------------------------------------------------
+function() ==> anonymous function คือฟังก์ชันที่ไม่ต้องมีชื่อ
+function ที่ถูกเรียกเป็น parameter ของ function อื่น ==> callback function
+ex 
+function success() {
+    console.log("success called");
+}
+
+function hello(cb) {
+    console.log("hello called");
+    cb();
+}
+
+hello(success);
+------------------------------------------------------------------------------------
+เรียกใช้ callback function ซ้อนๆกัน code มีปัญหา ==> ใช้ promise แก้
+promise จะทำงานตามเงื่อนไข true false โดยจะมี state คือ
+1 ending state ก่อนการทำ operation ใดๆ
+2 fulfilled state ที่ทำ operation สำเร็จ
+3 reject state ที่ทำ operation ไม่สำเร็จ
+
+การเรียกใช้ promise
+const promise = new Promise(function(resolve , reject){
+    .......
+})
+ดูใน callback_promise.js
+------------------------------------------------------------------------------------
+promise chain ==> การเรียกใช้ function ต่อๆกัน
+ex
+date
+    .then(function(done){
+        ..... ดึงข้อมูลจาก resolve
+    })
+    .catch(function(error){
+        ..... ดึงข้อมูลจาก reject
+    })
+ดูใน callback_promise.js
