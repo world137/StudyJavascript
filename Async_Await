@@ -1,0 +1,34 @@
+async & await ใช้แก้ปัญหาที่ของ promise เนื่องจากจะต้องเขียน .then ทุกครั้ง
+
+true
+
+------ async ------
+async function a(){
+    return 'aaaa'
+}
+------ promise ------
+function a(){
+    return Promise.resolve('aaaa')
+}
+
+false
+------ async ------
+async function a(){
+    throw 'aaaa'
+}
+------ promise ------
+function a(){
+    return Promise.reject('aaaa')
+}
+
+await ==> จะถูกใช้งานใน async function เท่านั้น
+------------------------------------------------------------------------------------
+ex
+ใส่ async หน้า function 
+และใส่ await หน้า code หรือ function ที่ต้องการทำให้เสร็จก่อนทำคำสั่งถัดไป
+
+async function do() {
+  const a = await doA();
+  const b = await doB(a);
+  const c = await doC(b);
+}
